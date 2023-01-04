@@ -1,7 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import React, {useState } from "react";
 import Header from "../header/Header";
 import {AiFillStar} from "react-icons/ai"
+import Link from "next/link";
 
 const DetailComic = () => {
   return (
@@ -28,9 +29,11 @@ const ImagePreview= ()=> {
             </div>
             <br />
             <div className={"c-flex-center"}>
-                <div style={{width: "max-content", background: "#2dc275", fontSize: 14, color: "#fff", padding: 10, borderRadius: 10, cursor: "pointer"}} className={"c-flex-center"}>
-                    Đọc truyện
-                </div>
+                <Link href={"/read/1230323"}>
+                    <div style={{width: "max-content", background: "#2dc275", fontSize: 14, color: "#fff", padding: 10, borderRadius: 10, cursor: "pointer"}} className={"c-flex-center"}>
+                        Đọc truyện
+                    </div>
+                </Link>
             </div>
         </div>
     )

@@ -7,13 +7,17 @@ import Link from 'next/link'
 
 const Header = () => {
   return (
-    <div style={{width: "100%", padding: 10, height: 60, borderBottom: "1px solid #e7e7e7"}} className={"c-flex-center"}>
-       <div style={{width: "100%", maxWidth: 1200, justifyContent: "space-between"}} className={"c-flex-center"} >
-        <Logo />    
-        <Category />
-        <SearchBar />
-       </div>
-    </div>
+    <>
+        <div style={{width: "100%", padding: 10, height: 60, borderBottom: "1px solid #e7e7e7", position: "fixed", top: 0, left: 0, zIndex: 99, background: "#fff"}} className={"c-flex-center"}>
+            <div style={{width: "100%", maxWidth: 1200, justifyContent: "space-between"}} className={"c-flex-center"} >
+                <Logo />    
+                <Category />
+                <SearchBar />
+            </div>
+        </div>
+        <div style={{height: 60}}></div>
+    </>
+
   )
 }
 
