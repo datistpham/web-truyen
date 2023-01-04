@@ -7,9 +7,11 @@ import {IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import {AiFillStar} from "react-icons/ai"
 import Link from 'next/link'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  
   return (
     <div style={{width: "100%"}}>
       <Header />

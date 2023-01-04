@@ -16,7 +16,7 @@ const ReadComic = () => {
 const ProgressBarComponent= ()=> {
     return (
         <>
-            <div style={{position: "fixed", top: 60, left: 0, width: "100%", background: "#fff"}}>
+            <div style={{position: "fixed", top: 60, left: 0, width: "100%", background: "#fff", zIndex: 99}}>
                 <div style={{width: "100%", height: 80, justifyContent: "space-between", padding: 10, borderBottom: "1px solid #e7e7e7"}} className={"c-flex-center"}>
                     <div style={{gap: 10}} className={"c-flex-center"}>
                         <div style={{aspectRatio: 2 / 3, width: 40, position: "relative"}}>
@@ -119,7 +119,9 @@ const RightSideMainRead1= ()=> {
 
             <div style={{marginBottom: 16}}>Ánh sáng đèn đường thưa thớt chiếu xuống, in trên mặt đất những cái bóng dài bóng ngắn. Bóng của những tán lá cây ngô đồng chồng chéo lên nhau. Tống Tiểu Vũ không dám đi vào đường tối, bèn chạy mau về phía ngã tư nơi có ánh đèn sáng nhất trung tâm, mong muốn nhanh chóng rời khỏi đoạn đường yên tĩnh đến dọa người này.</div>
 
-
+            <div className={"c-flex-center"} style={{background: "#ff6122", borderRadius: 10, cursor: "pointer", color: "#fff", fontWeight: 600, padding: 16}}>
+                Đọc tiếp 
+            </div>
         </div>
     )
 }
