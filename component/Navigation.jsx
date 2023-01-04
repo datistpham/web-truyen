@@ -13,7 +13,7 @@ function getItem(label, key, icon, children, type) {
 }
 const items = [
   getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Danh sách user', null, null, [getItem(<Link href="/admin/user">Danh sách user</Link>, '1')], 'group'),
+    getItem('Danh sách user', null, null, [getItem(<Link href="/admin/user">Danh sách user</Link>, '1'), getItem(<Link href="/admin/role">Role</Link>, '2')], 'group'),
   ]),
   getItem('Category', 'sub2', <AppstoreOutlined />, [
     getItem(<Link href="/admin/category">Danh sách category</Link>, '5'),

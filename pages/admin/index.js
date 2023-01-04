@@ -1,12 +1,12 @@
-import React from 'react'
-import Navigation from './component/Navigation'
+import React from "react";
+import Navigation from "../../component/Navigation";
 
 const Admin = () => {
   return (
-    <div style={{width: '100%', display: "flex"}}>
-        <Navigation />
+    <div style={{ width: "100%", display: "flex" }}>
+      <Navigation />
     </div>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;

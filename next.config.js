@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['sstruyen.vn', 'img.wattpad.com'],
+    domains: ['sstruyen.vn', 'img.wattpad.com', 'i.pinimg.com'],
     remotePatterns: [
       {
         hostname: 'upload.wikimedia.org'

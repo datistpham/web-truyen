@@ -11,7 +11,7 @@ const login= async (email, password, setData)=> {
     })
     const result= await res.data
     if(result?.at?.length > 0 ) {
-        return {message: "Đăng nhập thành công", signin: true, accessToken: result?.at}
+        return {message: "Đăng nhập thành công", signin: true, accessToken: result?.at, uid: result.user?.id}
     }
     return {message: result.message, status: result.status, signin: false}
 }
