@@ -24,7 +24,13 @@ const ImagePreview= ()=> {
     return (
         <div style={{width: "calc(100% / 5)"}}>
             <div style={{width: "100%", aspectRatio: 2 / 3, position: "relative"}}>
-                <Image style={{borderRadius: 10}} alt="" fill src={"https://sstruyen.vn/assets/img/story//quy-de-cuong-the-dai-tieu-thu-an-choi-trac-tang.1576219219.jpg"} />
+                <Image style={{borderRadius: 10, boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px", overflow: "hidden"}} alt="" fill src={"https://sstruyen.vn/assets/img/story//quy-de-cuong-the-dai-tieu-thu-an-choi-trac-tang.1576219219.jpg"} />
+            </div>
+            <br />
+            <div className={"c-flex-center"}>
+                <div style={{width: "max-content", background: "#2dc275", fontSize: 14, color: "#fff", padding: 10, borderRadius: 10, cursor: "pointer"}} className={"c-flex-center"}>
+                    Đọc truyện
+                </div>
             </div>
         </div>
     )
@@ -41,6 +47,9 @@ const BriefComic= ()=> {
                     <AiFillStar color={"orange"} />
                 </div>
                 <span style={{color: "#00000080", fontSize: 14}}>7.5/10</span>
+                <div className={"c-flex-center"} style={{background: "#2dc275", fontSize: 12, color: "#fff", padding: 10, borderRadius: 10, cursor: "pointer"}}>
+                    Theo dõi
+                </div>
             </div>
             <div style={{width: "100%", background: "#f0f0f0", borderRadius: 10, padding: 20}}>
                 <Component1 title={"Tác giả:"} content={"Tiêu thất gia"} />
@@ -64,7 +73,28 @@ const Category= ({})=> {
                 <div style={{fontSize: 20, fontWeight: 600, textAlign: "center", margin: "12px 0"}}>
                     Thể loại truyện
                 </div>
+                <div style={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap"}}>
+                    <ComponentCategory category={"Tiên hiệp"} />
+                    <ComponentCategory category={"Truyện sủng"} />
+                    <ComponentCategory category={"Kiếm hiệp"} />
+                    <ComponentCategory category={"Ngôn tình"} />
+                    <ComponentCategory category={"Đô thị"} />
+                    <ComponentCategory category={"Quan trường"} />
+                    <ComponentCategory category={"Võng du"} />
+                    <ComponentCategory category={"Huyền nhuyễn"} />
+                    <ComponentCategory category={"Dị giới"} />
+                    <ComponentCategory category={"Dị năng"} />
+                    <ComponentCategory category={"Quân sự"} />    
+                </div>
             </div>
+        </div>
+    )
+}
+
+const ComponentCategory= ({category})=> {
+    return (
+        <div style={{width: "50%", fontWeight: 600, padding: 10, whiteSpace: "nowrap", justifyContent: "flex-start"}} className={"c-flex-center"}>
+            {category}
         </div>
     )
 }
