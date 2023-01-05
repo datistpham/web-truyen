@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../component/header/Header";
 import ProgressBar from "react-progressbar-on-scroll";
 import { useRouter } from "next/router";
@@ -7,6 +7,10 @@ import get_chap_from_comic from "../api/get_chap_from_comic";
 // import get_product from "../api/get_product";
 import get_detail_comic from "../api/get_detail_comic";
 import {MdGTranslate } from "react-icons/md"
+import { Input, Modal } from "antd";
+import contribute_translation from "../api/contributor/contribute_translation";
+import swal from "sweetalert";
+import { ContextProvider } from "../../context/context";
 
 const ReadComic = () => {
   const router = useRouter();
@@ -180,7 +184,12 @@ const LeftSideMainRead1 = () => {
 };
 
 const RightSideMainRead1 = ({ data, chap, comic }) => {
+  const {user}= useContext(ContextProvider)
   const [numberPage, setNumberPage] = useState(0);
+  const [translateId, setTranslateId]= useState("")
+  const [originTranslate, setOriginTranslate]= useState("")
+  const [translation, setTranslation]= useState("")
+  const [open, setOpen]= useState(false)
   const router = useRouter();
   const nextChap = () => {
     if (parseInt(chap) + parseInt(1) > parseInt(numberPage.chaps) + 1) {
@@ -204,9 +213,16 @@ const RightSideMainRead1 = ({ data, chap, comic }) => {
           </div>
           <div style={{ marginBottom: 10, position: "relative"}}>
             {item?.translation_sentence?.[0]?.translate_context}
-            <div className={"c-flex-center"} style={{right: 0, top: "50%", transform: "translate(50%, -50%)", position: "absolute", paddingLeft: 10}}>
-              <MdGTranslate style={{width: 24, height: 24}} />
-            </div>
+            {
+              user?.role=== "contributor" &&
+              <div onClick={()=> {
+                setOpen(()=> true)
+                setOriginTranslate(item.sentence_context)
+                setTranslateId(item.id)
+              }} title={"Thêm bản dịch"} className={"c-flex-center"} style={{cursor: "pointer", right: 0, top: "50%", transform: "translate(50%, -50%)", position: "absolute", paddingLeft: 10}}>
+                <MdGTranslate style={{width: 24, height: 24}} />
+              </div>
+            }
           </div>
         </div>
       ))}
@@ -226,6 +242,18 @@ const RightSideMainRead1 = ({ data, chap, comic }) => {
           ? "Đang ra tiếp..."
           : "Đọc tiếp"}
       </div>
+      <Modal open={open} centered title={"Thêm bản dịch"} onCancel={()=> setOpen(()=> false)} onOk={()=> {
+        contribute_translation(translation, "", translateId)
+        swal("Thông báo", "Bạn đã đóng góp bản dịch thành công", "success")
+        .then(()=> setOpen(()=> false))
+      }}>
+          <div>{originTranslate}</div>
+          <br />
+          <div>
+            <div style={{marginBottom: 8, fontSize: 14, fontWeight: 600}}>Bản dịch của bạn</div>
+            <Input value={translation} onChange={(e)=> setTranslation(e.target.value)} style={{width: "100% "}} />
+          </div>
+      </Modal>
     </div>
   );
 };

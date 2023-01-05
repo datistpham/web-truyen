@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
-import { AiFillFolderOpen, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import { BiCategoryAlt } from "react-icons/bi";
 import Link from "next/link";
@@ -16,6 +16,7 @@ import update_user from "../../pages/api/user/update_user";
 import get_notification from "../../pages/api/user/get_notification";
 import read_notification from "../../pages/api/user/read_notification";
 import get_story_by_categories from "../../pages/api/get_story_by_categories";
+import moment from "moment"
 
 const Header = ({setData}) => {
   const { user } = useContext(ContextProvider);
@@ -351,7 +352,12 @@ const Notification = () => {
 
     }
     else if(data?.length > 0) {
-      return data?.map((item, key)=> <div key={key} style={{padding: 10, width: "100%", borderBottom: "1px solid #e7e7e7"}}>Item notification</div>)
+      return data?.map((item, key)=> <Link href={"/story/"+ item?.story+ "/" + item?.chap} key={key}>
+        <div style={{padding: 10, width: "100%", borderBottom: "1px solid #e7e7e7", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+          <div>{item.body}</div>
+          <div>{moment(item?.createdAt).format("HH:mm:ss DD-MM-YYYY")}</div>
+        </div>
+      </Link>)
     }
 
   }
